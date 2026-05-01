@@ -2,6 +2,7 @@
 Utility functions for data processing
 """
 import pandas as pd
+from models import classify_risk_level
 
 
 def create_input_dataframe(age, gender, cp, rbp, chol, fbs, restecg, thalach, exang, oldpeak, slope):
@@ -27,5 +28,5 @@ def generate_csv_report(input_data, probability):
     """Generate CSV report for download."""
     report = input_data.copy()
     report['risk_score'] = int(probability * 100)
-    report['risk_level'] = 'HIGH' if probability > 0.7 else 'MODERATE' if probability > 0.3 else 'LOW'
+    report['risk_level'] = classify_risk_level(probability)
     return report.to_csv(index=False)
