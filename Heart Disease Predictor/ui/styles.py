@@ -268,7 +268,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {{
 .stSelectbox label, .stSlider label,
 .stNumberInput label, .stRadio label,
 .stCheckbox label {{
-    color: #94b8d4 !important;
+    color: #ffffff !important;
     font-weight: 600 !important;
 }}
 
@@ -320,6 +320,12 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {{
 .stDownloadButton > button:hover {{
     transform: translateY(-2px) !important;
     box-shadow: 0 12px 36px rgba(5, 150, 105, 0.6) !important;
+}}
+
+/* ── Download Button Icon – dark blue ── */
+.stDownloadButton > button svg {{
+    fill: #00008b !important;
+    color: #00008b !important;
 }}
 
 /* ── Alerts ── */
