@@ -32,7 +32,7 @@ def show_sidebar_info(version):
 
         st.markdown("---")
         st.markdown(
-            f"<p style='text-align:center;color:#64748b;font-size:0.85em;font-weight:600;'>🏆 Cardiac Risk Assessment v{version}<br>AI-Powered Diagnostic Support</p>",
+            f"<p style='text-align:center;color:#4a7a9b;font-size:0.85em;font-weight:600;'>🏆 Cardiac Risk Assessment v{version}<br>AI-Powered Diagnostic Support</p>",
             unsafe_allow_html=True)
 
 
@@ -66,23 +66,23 @@ def display_risk_gauge(probability):
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=int(probability * 100),
-        title={'text': "<b>Cardiac Risk Score</b>", 'font': {'size': 24, 'color': '#0284c7'}},
+        title={'text': "<b>Cardiac Risk Score</b>", 'font': {'size': 24, 'color': '#00d4ff'}},
         gauge={
-            'axis': {'range': [0, 100], 'tickwidth': 2, 'tickcolor': '#64748b'},
-            'bar': {'color': "#dc2626" if probability > 0.7 else "#f97316" if probability > 0.3 else "#16a34a"},
+            'axis': {'range': [0, 100], 'tickwidth': 2, 'tickcolor': '#475569'},
+            'bar': {'color': "#ef4444" if probability > 0.7 else "#f97316" if probability > 0.3 else "#22c55e"},
             'steps': [
-                {'range': [0, 30], 'color': "#f0fdf4"},
-                {'range': [30, 70], 'color': "#fffbeb"},
-                {'range': [70, 100], 'color': "#fef2f2"}
+                {'range': [0, 30], 'color': "rgba(34,197,94,0.12)"},
+                {'range': [30, 70], 'color': "rgba(249,115,22,0.12)"},
+                {'range': [70, 100], 'color': "rgba(239,68,68,0.15)"}
             ],
-            'threshold': {'line': {'color': "#dc2626", 'width': 5}, 'value': 70}
+            'threshold': {'line': {'color': "#ef4444", 'width': 5}, 'value': 70}
         },
-        number={'font': {'size': 50, 'color': '#0284c7', 'family': 'Arial Black'}}
+        number={'font': {'size': 50, 'color': '#00d4ff', 'family': 'Arial Black'}}
     ))
     fig.update_layout(
-        paper_bgcolor="rgba(255,255,255,0)",
-        plot_bgcolor="rgba(255,255,255,0)",
-        font={'family': "Inter, sans-serif", 'color': "#1e293b", 'size': 14},
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font={'family': "Inter, sans-serif", 'color': "#e2e8f0", 'size': 14},
         height=420,
         margin=dict(l=20, r=20, t=80, b=20)
     )
@@ -128,9 +128,9 @@ def display_insights(top_positive, top_negative):
 def show_ready_state():
     """Display ready state message."""
     st.markdown("""
-    <div style='background: linear-gradient(135deg, rgba(6, 182, 212, 0.05) 0%, rgba(3, 139, 180, 0.05) 100%); 
-                border: 2px dashed #0ea5e9; border-radius: 16px; padding: 40px; text-align: center;'>
-        <h3 style='color: #0284c7; margin-bottom: 10px;'>👈 Ready for Analysis</h3>
-        <p style='color: #64748b; font-size: 1.05em;'>Fill in the patient data and click "Generate Diagnostic Report".</p>
+    <div style='background: linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(59,130,246,0.06) 100%);
+                border: 2px dashed rgba(0,212,255,0.4); border-radius: 16px; padding: 40px; text-align: center;'>
+        <h3 style='color: #00d4ff; margin-bottom: 10px; text-shadow: 0 0 14px rgba(0,212,255,0.5);'>👈 Ready for Analysis</h3>
+        <p style='color: #7fa8c9; font-size: 1.05em;'>Fill in the patient data and click "Generate Diagnostic Report".</p>
     </div>
     """, unsafe_allow_html=True)
