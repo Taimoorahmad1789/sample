@@ -1,28 +1,10 @@
-# Cardiac Risk Assessment — Full-Stack
+# Cardiac Risk Assessment Dashboard
 
-This repository contains **two apps** that run side-by-side:
-
-| App | Directory | Port | Purpose |
-|-----|-----------|------|---------|
-| Streamlit (Python) | `Heart Disease Predictor/` | 8501 | ML model + original UI |
-| React (Node/Vite) | `frontend/` | 3000 | Modern React UI shell |
-
-Neither app removes the other. You can use whichever UI you prefer.
+A modern React + Vite frontend for the Cardiac Risk Assessment Dashboard. The app features a dark medical dashboard UI with interactive inputs, simulated AI risk predictions, and rich insights — all running standalone without any backend dependency.
 
 ---
 
 ## Quick Start
-
-### 1. Streamlit app
-
-```bash
-cd "Heart Disease Predictor"
-pip install -r requirements.txt   # first time only
-streamlit run app.py
-# → open http://localhost:8501
-```
-
-### 2. React app (in a separate terminal)
 
 ```bash
 cd frontend
@@ -31,7 +13,13 @@ npm run dev
 # → open http://localhost:3000
 ```
 
-Both apps can run simultaneously. The React frontend proxies `/api/*` requests to Streamlit's port 8501 automatically.
+To build for production:
+
+```bash
+cd frontend
+npm run build        # output goes to frontend/dist/
+npm run preview      # serve the production build locally
+```
 
 ---
 
@@ -39,22 +27,34 @@ Both apps can run simultaneously. The React frontend proxies `/api/*` requests t
 
 ```
 .
-├── Heart Disease Predictor/    # Streamlit ML app (unchanged)
-│   ├── app.py
-│   ├── requirements.txt
-│   ├── config.py
-│   ├── models.py
-│   ├── utils.py
-│   ├── ui/
-│   └── assets/
-│
-└── frontend/                   # React UI shell (new)
+└── frontend/                   # React app (Vite + React 18)
+    ├── index.html
     ├── package.json
     ├── vite.config.js
-    ├── README.md               ← detailed frontend docs
+    ├── README.md
     └── src/
+        ├── main.jsx
         ├── App.jsx
+        ├── App.module.css
+        ├── index.css
         └── components/
+            ├── Header.jsx
+            ├── Sidebar.jsx
+            ├── InputForm.jsx
+            └── ResultsPanel.jsx
 ```
 
-For full React setup instructions see **[frontend/README.md](frontend/README.md)**.
+---
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 18 |
+| Build tool | Vite 5 |
+| Charts | Recharts |
+| Styling | CSS Modules (custom dark theme) |
+
+## Standalone Mode
+
+The app runs fully standalone. When no backend API is available, it automatically falls back to a built-in simulation engine that computes realistic risk scores from the input values — no server required.

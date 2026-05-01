@@ -1,7 +1,6 @@
 # React Frontend — Cardiac Risk Assessment Dashboard
 
-A React + Vite UI shell that mirrors the dark-themed medical dashboard of the existing Streamlit app.  
-Both apps run **side-by-side**; neither replaces the other.
+A React + Vite dark medical dashboard for cardiac risk assessment. The app runs **fully standalone** — no Python or Streamlit dependency required.
 
 ---
 
@@ -22,27 +21,10 @@ Both apps run **side-by-side**; neither replaces the other.
 
 - **Node.js ≥ 18** (`node --version`)
 - **npm ≥ 9** (`npm --version`)
-- **Python ≥ 3.9** with the Streamlit app dependencies installed
 
 ---
 
-## Running Streamlit and React Side-by-Side
-
-Open **two separate terminal windows/tabs**:
-
-### Terminal 1 — Streamlit (Python backend + UI)
-
-```bash
-cd "Heart Disease Predictor"
-pip install -r requirements.txt   # first time only
-streamlit run app.py
-```
-
-Streamlit starts on **http://localhost:8501**
-
----
-
-### Terminal 2 — React frontend (dev server)
+## Running the React App
 
 ```bash
 cd frontend
@@ -61,19 +43,6 @@ cd frontend
 npm run build        # output goes to frontend/dist/
 npm run preview      # serve the production build locally
 ```
-
----
-
-## Dev Proxy
-
-`vite.config.js` includes a lightweight proxy so the React app can call the Python backend:
-
-```
-React (localhost:3000) → /api/* → Streamlit (localhost:8501)
-```
-
-Any `fetch('/api/predict', ...)` call from React is transparently forwarded to Streamlit.  
-No CORS configuration is needed during development.
 
 ---
 
@@ -105,6 +74,6 @@ frontend/
 
 ## Notes
 
-- The React app is a **UI shell** — it can call the Streamlit backend through the `/api` proxy.
-- When the backend is not running, the frontend falls back to **demo/simulated results** so you can still explore the UI.
-- The Streamlit app is **not modified** and remains fully functional at `http://localhost:8501`.
+- The app is **fully standalone** — no backend required.
+- Risk predictions are computed locally by a built-in simulation engine using clinical thresholds.
+- If a real backend API becomes available at `/api/predict`, the app will use it automatically.
