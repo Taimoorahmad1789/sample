@@ -1,0 +1,50 @@
+/* ── Global reset & dark base ── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-deep:        #060d1f;
+  --bg-card:        rgba(10, 20, 48, 0.82);
+  --bg-card-border: rgba(0, 212, 255, 0.18);
+  --accent-cyan:    #00d4ff;
+  --accent-blue:    #3b82f6;
+  --accent-green:   #34d399;
+  --accent-red:     #f87171;
+  --text-primary:   #e2e8f0;
+  --text-muted:     #7fa8c9;
+  --text-label:     #94b8d0;
+  --input-bg:       #0d1b3e;
+  --input-border:   rgba(0, 212, 255, 0.3);
+  --shadow-glow:    0 0 32px rgba(0, 212, 255, 0.15);
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--bg-deep);
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a1428; }
+::-webkit-scrollbar-thumb { background: rgba(0, 212, 255, 0.35); border-radius: 3px; }
+
+/* Utilities */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card-border);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), var(--shadow-glow);
+  padding: 24px;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}

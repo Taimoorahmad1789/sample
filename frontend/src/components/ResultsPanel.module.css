@@ -1,0 +1,193 @@
+.cardHeader {
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.cardTitle {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  margin-bottom: 4px;
+}
+
+.cardSub {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+}
+
+.demoBadge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: rgba(251, 191, 36, 0.15);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  color: #fbbf24;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.3), transparent);
+  margin-bottom: 20px;
+}
+
+/* ── Gauge ── */
+.gaugeWrapper {
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.gaugeCenter {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.gaugePercent {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.gaugeLabel {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* ── Risk badge ── */
+.riskBadge {
+  border: 2px solid;
+  border-radius: 12px;
+  padding: 12px 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* ── Insights ── */
+.insightsSection {
+  margin-bottom: 24px;
+}
+
+.insightsTitle {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.insightsSub {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+}
+
+.insightsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.insightBadge {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.insightHigh {
+  background: rgba(248, 113, 113, 0.1);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: var(--accent-red);
+}
+
+.insightMod {
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.3);
+  color: #fbbf24;
+}
+
+.insightDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  flex-shrink: 0;
+}
+
+/* ── Loading / placeholder ── */
+.placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 240px;
+  color: var(--text-muted);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0, 212, 255, 0.2);
+  border-top-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Ready state ── */
+.readyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  min-height: 240px;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, rgba(59, 130, 246, 0.06) 100%);
+  border: 2px dashed rgba(0, 212, 255, 0.35);
+  border-radius: 16px;
+  padding: 40px;
+}
+
+.readyState h3 {
+  color: var(--accent-cyan);
+  font-size: 1.3rem;
+}
+
+.readyState p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.simNote {
+  margin-top: 8px;
+  font-size: 0.8rem !important;
+  color: #fbbf24 !important;
+}
+
+/* ── Disclaimer ── */
+.disclaimer {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  padding-top: 14px;
+  line-height: 1.5;
+}
