@@ -95,11 +95,22 @@ function simulateResult(inputs) {
   let probability = riskFactors.reduce((a, b) => a + b, 0);
   probability = Math.min(Math.max(probability + 0.05, 0.01), 0.99);
 
-  const topRiskFactors = [
-    { name: inputs.chestPain !== 'Non-anginal Pain' ? 'Chest Pain Type' : 'Resting Blood Pressure', impact: 'high' },
-    { name: inputs.age > 50 ? 'Age' : 'Cholesterol', impact: 'moderate' },
-    { name: inputs.exerciseAngina === 'Yes' ? 'Exercise-Induced Angina' : 'ST Depression', impact: 'moderate' },
+  // Build top risk factors from inputs that actually exceed clinical thresholds.
+  const candidateFactors = [
+    { name: 'Chest Pain Type', score: ['Asymptomatic', 'Typical Angina'].includes(inputs.chestPain) ? 0.2 : 0, impact: 'high' },
+    { name: 'Age', score: inputs.age > 60 ? 0.15 : inputs.age > 45 ? 0.08 : 0, impact: inputs.age > 60 ? 'high' : 'moderate' },
+    { name: 'Exercise-Induced Angina', score: inputs.exerciseAngina === 'Yes' ? 0.12 : 0, impact: 'high' },
+    { name: 'Resting Blood Pressure', score: inputs.restingBP > 160 ? 0.15 : inputs.restingBP > 140 ? 0.08 : 0, impact: inputs.restingBP > 160 ? 'high' : 'moderate' },
+    { name: 'Cholesterol', score: inputs.cholesterol > 300 ? 0.12 : inputs.cholesterol > 240 ? 0.06 : 0, impact: inputs.cholesterol > 300 ? 'high' : 'moderate' },
+    { name: 'Fasting Blood Sugar', score: inputs.fastingBS === 'True' ? 0.08 : 0, impact: 'moderate' },
+    { name: 'ST Depression', score: inputs.stDepression > 2 ? 0.1 : inputs.stDepression > 1 ? 0.05 : 0, impact: inputs.stDepression > 2 ? 'high' : 'moderate' },
+    { name: 'Max Heart Rate', score: inputs.maxHR < 120 ? 0.08 : inputs.maxHR < 150 ? 0.03 : 0, impact: 'moderate' },
   ];
+  const topRiskFactors = candidateFactors
+    .filter((f) => f.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(({ name, impact }) => ({ name, impact }));
 
   return { probability, topRiskFactors, simulated: true };
 }
