@@ -100,18 +100,14 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     border-radius: 24px;
     padding: 40px;
     border: 1px solid rgba(0, 212, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
-                0 0 0 1px rgba(0, 212, 255, 0.05),
-                0 0 40px rgba(0, 212, 255, 0.06);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
     transform: translateY(-5px);
     border-color: rgba(0, 212, 255, 0.45);
-    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.5),
-                0 0 60px rgba(0, 212, 255, 0.18),
-                0 0 0 1px rgba(0, 212, 255, 0.2);
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.5);
 }
 
 .card h2 {
@@ -122,7 +118,6 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     display: flex;
     align-items: center;
     gap: 12px;
-    text-shadow: 0 0 18px rgba(0, 212, 255, 0.4);
 }
 
 .card .subtitle {
@@ -251,7 +246,7 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     border-radius: 10px !important;
 }
 
-/* ── Primary Button (neon blue glow) ── */
+/* ── Primary Button ── */
 .stButton > button {
     width: 100% !important;
     background: linear-gradient(135deg, #0057b8 0%, #0284c7 50%, #00d4ff 100%) !important;
@@ -262,7 +257,6 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     border-radius: 16px !important;
     border: 1px solid rgba(0, 212, 255, 0.5) !important;
     box-shadow: 0 8px 24px rgba(0, 132, 199, 0.5),
-                0 0 40px rgba(0, 212, 255, 0.25),
                 inset 0 1px 0 rgba(255,255,255,0.1) !important;
     transition: all 0.3s ease !important;
     text-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
@@ -271,7 +265,6 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
 .stButton > button:hover {
     transform: translateY(-3px) !important;
     box-shadow: 0 14px 40px rgba(0, 132, 199, 0.65),
-                0 0 60px rgba(0, 212, 255, 0.4),
                 inset 0 1px 0 rgba(255,255,255,0.15) !important;
 }
 
@@ -285,15 +278,13 @@ html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     font-size: 1.05em !important;
     height: 55px !important;
     border: 1px solid rgba(52, 211, 153, 0.45) !important;
-    box-shadow: 0 8px 24px rgba(5, 150, 105, 0.45),
-                0 0 36px rgba(52, 211, 153, 0.2) !important;
+    box-shadow: 0 8px 24px rgba(5, 150, 105, 0.45) !important;
     transition: all 0.3s ease !important;
 }
 
 .stDownloadButton > button:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 12px 36px rgba(5, 150, 105, 0.6),
-                0 0 52px rgba(52, 211, 153, 0.35) !important;
+    box-shadow: 0 12px 36px rgba(5, 150, 105, 0.6) !important;
 }
 
 /* ── Alerts ── */
