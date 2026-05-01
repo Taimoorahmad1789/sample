@@ -4,201 +4,336 @@ CSS styling for Cardiac Risk Assessment App
 
 PREMIUM_CSS = """
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html, body {
+/* ── Full-page dark background ── */
+html, body, [data-testid="stAppViewContainer"], [data-testid="stApp"] {
     font-family: 'Inter', 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #0f172a;
-    color: #1e293b;
+    background: #060d1f !important;
+    color: #e2e8f0 !important;
 }
 
-.main {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f1628 100%);
+/* Main content area */
+[data-testid="stAppViewContainer"] > .main,
+.main, section.main {
+    background: linear-gradient(160deg, #060d1f 0%, #0d1b3e 40%, #091929 100%) !important;
     padding: 0 !important;
 }
 
-/* Premium Header */
+/* Block container */
+[data-testid="block-container"] {
+    background: transparent !important;
+    padding-top: 0 !important;
+}
+
+/* ── Sidebar ── */
+[data-testid="stSidebar"], [data-testid="stSidebar"] > div {
+    background: linear-gradient(180deg, #0d1b3e 0%, #112240 60%, #0a1628 100%) !important;
+    border-right: 1px solid rgba(0, 212, 255, 0.18) !important;
+    box-shadow: 4px 0 24px rgba(0, 212, 255, 0.08) !important;
+}
+
+[data-testid="stSidebar"] * {
+    color: #cbd5e1 !important;
+}
+
+[data-testid="stSidebar"] .stInfo,
+[data-testid="stSidebar"] .stSuccess {
+    background: rgba(0, 212, 255, 0.08) !important;
+    border: 1px solid rgba(0, 212, 255, 0.25) !important;
+    color: #94d8fb !important;
+    border-radius: 10px !important;
+}
+
+/* ── Premium Header ── */
 .premium-header {
-    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0284c7 100%);
+    background: linear-gradient(135deg, #0d1b3e 0%, #112240 40%, #0a2444 100%);
     padding: 60px 40px;
     text-align: center;
     margin-bottom: 40px;
-    box-shadow: 0 20px 60px rgba(6, 182, 212, 0.3);
-    border-bottom: 3px solid rgba(6, 182, 212, 0.5);
+    border-bottom: 2px solid rgba(0, 212, 255, 0.35);
+    box-shadow: 0 8px 40px rgba(0, 212, 255, 0.18), 0 2px 0 rgba(0, 212, 255, 0.4);
+    position: relative;
+}
+
+.premium-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, #3b82f6, #00d4ff, transparent);
+    filter: blur(1px);
 }
 
 .premium-header h1 {
     font-size: 3.5em;
-    color: white;
+    color: #ffffff;
     font-weight: 900;
     margin: 0;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    text-shadow: 0 0 30px rgba(0, 212, 255, 0.6), 0 4px 20px rgba(0, 0, 0, 0.5);
     letter-spacing: -1px;
+    background: linear-gradient(135deg, #ffffff 0%, #00d4ff 60%, #3b82f6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .premium-header p {
     font-size: 1.3em;
-    color: rgba(255, 255, 255, 0.95);
+    color: rgba(180, 220, 255, 0.9);
     margin-top: 15px;
     font-weight: 500;
     letter-spacing: 0.5px;
 }
 
-/* Input/Results Card */
+/* ── Cards ── */
 .card {
-    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    background: linear-gradient(145deg, #0d1b3e 0%, #112240 60%, #0a2444 100%);
     border-radius: 24px;
     padding: 40px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-    border: 2px solid rgba(6, 182, 212, 0.1);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 0 1px rgba(0, 212, 255, 0.05),
+                0 0 40px rgba(0, 212, 255, 0.06);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card:hover {
-    box-shadow: 0 30px 80px rgba(6, 182, 212, 0.2);
     transform: translateY(-5px);
+    border-color: rgba(0, 212, 255, 0.45);
+    box-shadow: 0 16px 60px rgba(0, 0, 0, 0.5),
+                0 0 60px rgba(0, 212, 255, 0.18),
+                0 0 0 1px rgba(0, 212, 255, 0.2);
 }
 
 .card h2 {
-    color: #0284c7;
+    color: #00d4ff;
     font-size: 1.8em;
     font-weight: 800;
     margin-bottom: 10px;
     display: flex;
     align-items: center;
     gap: 12px;
+    text-shadow: 0 0 18px rgba(0, 212, 255, 0.4);
 }
 
 .card .subtitle {
-    color: #64748b;
+    color: #7fa8c9;
     font-size: 0.95em;
     margin-bottom: 30px;
     font-weight: 500;
 }
 
+/* ── Divider ── */
 .divider {
     height: 2px;
-    background: linear-gradient(90deg, transparent, #0ea5e9, transparent);
+    background: linear-gradient(90deg, transparent, #00d4ff, #3b82f6, transparent);
     margin: 30px 0;
     border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 212, 255, 0.4);
 }
 
-/* Risk Badges */
+/* ── Risk Badges ── */
 .risk-high {
-    background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
-    color: white;
+    background: linear-gradient(135deg, #1e0a0a 0%, #3b0f0f 100%);
+    color: #fca5a5;
     padding: 25px;
     border-radius: 16px;
     font-size: 1.4em;
     font-weight: 800;
     text-align: center;
     margin: 20px 0;
-    box-shadow: 0 10px 30px rgba(244, 63, 94, 0.3);
-    border-left: 6px solid #dc2626;
+    border: 1px solid rgba(239, 68, 68, 0.5);
+    box-shadow: 0 8px 32px rgba(239, 68, 68, 0.25), 0 0 24px rgba(239, 68, 68, 0.15);
 }
 
 .risk-moderate {
-    background: linear-gradient(135deg, #fdba74 0%, #fb923c 100%);
-    color: white;
+    background: linear-gradient(135deg, #1f1200 0%, #3b1f00 100%);
+    color: #fdba74;
     padding: 25px;
     border-radius: 16px;
     font-size: 1.4em;
     font-weight: 800;
     text-align: center;
     margin: 20px 0;
-    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3);
-    border-left: 6px solid #f97316;
+    border: 1px solid rgba(249, 115, 22, 0.5);
+    box-shadow: 0 8px 32px rgba(249, 115, 22, 0.25), 0 0 24px rgba(249, 115, 22, 0.15);
 }
 
 .risk-low {
-    background: linear-gradient(135deg, #86efac 0%, #4ade80 100%);
-    color: white;
+    background: linear-gradient(135deg, #031a0e 0%, #062d18 100%);
+    color: #86efac;
     padding: 25px;
     border-radius: 16px;
     font-size: 1.4em;
     font-weight: 800;
     text-align: center;
     margin: 20px 0;
-    box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
-    border-left: 6px solid #16a34a;
+    border: 1px solid rgba(34, 197, 94, 0.5);
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.2), 0 0 24px rgba(34, 197, 94, 0.12);
 }
 
-/* Insight Boxes */
+/* ── Insight Boxes ── */
 .insight-box {
-    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 100%);
-    color: white;
+    background: linear-gradient(145deg, #0a1e3d 0%, #0f2a50 100%);
+    color: #e2e8f0;
     padding: 30px;
     border-radius: 16px;
     margin: 20px 0;
-    box-shadow: 0 15px 40px rgba(6, 182, 212, 0.3);
-    border: 2px solid rgba(6, 182, 212, 0.5);
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(0, 212, 255, 0.12);
     transition: all 0.3s ease;
 }
 
 .insight-box:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 50px rgba(6, 182, 212, 0.4);
+    border-color: rgba(0, 212, 255, 0.55);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5),
+                0 0 48px rgba(0, 212, 255, 0.22);
 }
 
 .insight-box h4 {
-    color: white;
+    color: #00d4ff;
     font-size: 1.2em;
     margin-bottom: 12px;
     font-weight: 800;
+    text-shadow: 0 0 12px rgba(0, 212, 255, 0.5);
 }
 
 .insight-box p {
     font-size: 1.05em;
     line-height: 1.6;
     margin: 0;
+    color: #cbd5e1;
 }
 
 .insight-box-green {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    border-color: rgba(52, 211, 153, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 30px rgba(52, 211, 153, 0.12);
 }
 
-/* Button */
+.insight-box-green:hover {
+    border-color: rgba(52, 211, 153, 0.6);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5),
+                0 0 48px rgba(52, 211, 153, 0.22);
+}
+
+.insight-box-green h4 {
+    color: #34d399;
+    text-shadow: 0 0 12px rgba(52, 211, 153, 0.5);
+}
+
+/* ── Streamlit widgets on dark background ── */
+[data-testid="stWidgetLabel"] label,
+.stSelectbox label, .stSlider label,
+.stNumberInput label, .stRadio label,
+.stCheckbox label {
+    color: #94b8d4 !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stSelectbox"] > div > div,
+[data-testid="stNumberInput"] input,
+[data-testid="stTextInput"] input {
+    background: #0d1b3e !important;
+    color: #e2e8f0 !important;
+    border: 1px solid rgba(0, 212, 255, 0.25) !important;
+    border-radius: 10px !important;
+}
+
+/* ── Primary Button (neon blue glow) ── */
 .stButton > button {
     width: 100% !important;
-    background: linear-gradient(135deg, #0ea5e9 0%, #06b6d4 50%, #0284c7 100%) !important;
-    color: white !important;
+    background: linear-gradient(135deg, #0057b8 0%, #0284c7 50%, #00d4ff 100%) !important;
+    color: #ffffff !important;
     font-weight: 800 !important;
     font-size: 1.1em !important;
     height: 60px !important;
     border-radius: 16px !important;
-    border: none !important;
-    box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4) !important;
+    border: 1px solid rgba(0, 212, 255, 0.5) !important;
+    box-shadow: 0 8px 24px rgba(0, 132, 199, 0.5),
+                0 0 40px rgba(0, 212, 255, 0.25),
+                inset 0 1px 0 rgba(255,255,255,0.1) !important;
     transition: all 0.3s ease !important;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3) !important;
 }
 
 .stButton > button:hover {
     transform: translateY(-3px) !important;
-    box-shadow: 0 15px 45px rgba(6, 182, 212, 0.6) !important;
+    box-shadow: 0 14px 40px rgba(0, 132, 199, 0.65),
+                0 0 60px rgba(0, 212, 255, 0.4),
+                inset 0 1px 0 rgba(255,255,255,0.15) !important;
 }
 
-/* Download Button */
+/* ── Download Button ── */
 .stDownloadButton > button {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%) !important;
-    color: white !important;
+    background: linear-gradient(135deg, #065f46 0%, #059669 60%, #34d399 100%) !important;
+    color: #ffffff !important;
     width: 100% !important;
     border-radius: 16px !important;
     font-weight: 800 !important;
     font-size: 1.05em !important;
     height: 55px !important;
+    border: 1px solid rgba(52, 211, 153, 0.45) !important;
+    box-shadow: 0 8px 24px rgba(5, 150, 105, 0.45),
+                0 0 36px rgba(52, 211, 153, 0.2) !important;
+    transition: all 0.3s ease !important;
 }
 
-/* Alerts */
-.stInfo, .stSuccess, .stWarning, .stError {
+.stDownloadButton > button:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 36px rgba(5, 150, 105, 0.6),
+                0 0 52px rgba(52, 211, 153, 0.35) !important;
+}
+
+/* ── Alerts ── */
+.stInfo {
+    background: rgba(0, 100, 200, 0.12) !important;
+    border: 1px solid rgba(0, 212, 255, 0.3) !important;
     border-radius: 12px !important;
     padding: 18px 24px !important;
     font-weight: 600 !important;
+    color: #93c5fd !important;
 }
 
-/* Responsive */
+.stSuccess {
+    background: rgba(5, 150, 105, 0.12) !important;
+    border: 1px solid rgba(52, 211, 153, 0.3) !important;
+    border-radius: 12px !important;
+    padding: 18px 24px !important;
+    font-weight: 600 !important;
+    color: #6ee7b7 !important;
+}
+
+.stWarning {
+    background: rgba(180, 83, 9, 0.12) !important;
+    border: 1px solid rgba(251, 146, 60, 0.35) !important;
+    border-radius: 12px !important;
+    padding: 18px 24px !important;
+    font-weight: 600 !important;
+    color: #fdba74 !important;
+}
+
+.stError {
+    background: rgba(180, 20, 20, 0.12) !important;
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
+    border-radius: 12px !important;
+    padding: 18px 24px !important;
+    font-weight: 600 !important;
+    color: #fca5a5 !important;
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .premium-header h1 { font-size: 2.2em; }
     .card { padding: 25px; }
