@@ -18,7 +18,7 @@ from models import load_model_and_explainer, get_risk_prediction, classify_risk_
 from ui.styles import PREMIUM_CSS
 from ui.components import (
     show_header, show_sidebar_info, show_input_card_header, show_results_card_header,
-    show_divider, display_risk_gauge, display_risk_status, display_insights, show_ready_state
+    show_divider, display_risk_distribution_chart, display_risk_status, display_insights, show_ready_state
 )
 from utils import create_input_dataframe, generate_csv_report
 
@@ -74,8 +74,8 @@ with col2:
             processed_input = preprocessor.transform(input_data)
             prob = get_risk_prediction(model, input_data)
 
-            # Display Gauge
-            display_risk_gauge(prob)
+            # Display Risk Distribution Chart
+            display_risk_distribution_chart(prob)
 
             # Display Status
             display_risk_status(prob)
