@@ -1,0 +1,53 @@
+.header {
+  background: linear-gradient(
+    135deg,
+    rgba(0, 212, 255, 0.12) 0%,
+    rgba(59, 130, 246, 0.12) 50%,
+    rgba(139, 92, 246, 0.08) 100%
+  );
+  border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+  padding: 20px 28px;
+  backdrop-filter: blur(10px);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.icon {
+  font-size: 2.4rem;
+  filter: drop-shadow(0 0 12px rgba(0, 212, 255, 0.6));
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff 0%, #3b82f6 50%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.badge {
+  margin-left: auto;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(59, 130, 246, 0.15));
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  color: var(--accent-cyan);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
